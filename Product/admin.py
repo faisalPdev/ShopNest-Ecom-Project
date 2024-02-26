@@ -17,7 +17,7 @@ class shortDescriptionTabular(admin.TabularInline):
 
 class ProductAdmin(admin.ModelAdmin):
     inlines=[shortDescriptionTabular,AdditionalInfoTabular,AdditionalImageTabular]
-    list_display=['title','product_image','price']
+    list_display=['title','category','product_image','price']
 
 admin.site.register(Product,ProductAdmin)
 

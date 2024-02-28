@@ -169,17 +169,10 @@
                                     <div class="header__search-cat">
                                         <select>
                                             <option>All Categories</option>
-                                            <option>Best Seller Products</option>
-                                            <option>Top 10 Offers</option>
-                                            <option>New Arrivals</option>
-                                            <option>Phones &amp; Tablets</option>
-                                            <option>Electronics &amp; Digital</option>
-                                            <option>Fashion &amp; Clothings</option>
-                                            <option>Jewelry &amp; Watches</option>
-                                            <option>Health &amp; Beauty</option>
-                                            <option>Sound &amp; Speakers</option>
-                                            <option>TV &amp; Audio</option>
-                                            <option>Computers</option>
+                                            {% for cat in category %}
+                                            <option>{{cat.title}}</option>
+                                            {% endfor %}
+                                            
                                         </select>
                                     </div>
                                 </form>
@@ -268,10 +261,11 @@
                         <a href="shop.html">
                             <i class="fal fa-desktop"></i>
                         Laptop <br> & Computer
+                        
                         </a>
                     </div>
                     <div class="box-item">
-                        <a href="shop.html">
+                        <a href={% url 'mobile' %}>
                             <i class="fal fa-mobile"></i>
                         Tablets <br> & Mobile Phones
                         </a>

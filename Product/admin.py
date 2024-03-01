@@ -5,6 +5,7 @@ from .models import *
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display=['title','category_image']
+    search_fields=['title']
 
 class AdditionalInfoTabular(admin.TabularInline): 
     model=Additional_Information
@@ -18,6 +19,7 @@ class shortDescriptionTabular(admin.TabularInline):
 class ProductAdmin(admin.ModelAdmin):
     inlines=[shortDescriptionTabular,AdditionalInfoTabular,AdditionalImageTabular]
     list_display=['title','category','product_image','price']
+    search_fields=['title']
 
 admin.site.register(Product,ProductAdmin)
 

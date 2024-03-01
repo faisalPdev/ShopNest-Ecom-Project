@@ -33,6 +33,7 @@ class Product(models.Model):
     discount=models.PositiveIntegerField(default=0,null=True)
     brand=models.CharField(max_length=64)
     available=models.PositiveIntegerField(default=0,null=True)
+    total=models.PositiveIntegerField(default=100,null=0)
     description=RichTextField(null=True,blank=True)
 
     sku=ShortUUIDField(unique=True,length=10,max_length=30,prefix="sku",alphabet="123456789")

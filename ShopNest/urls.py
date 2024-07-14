@@ -19,10 +19,13 @@ from django.urls import include, path
 from django.conf import settings
 from django.conf.urls.static import static
 
+
 urlpatterns = [
-    path('jet/', include('jet.urls', 'jet')),  # Django JET URLS
+    # path('jet/', include('jet.urls', 'jet')),  # Django JET URLS
     path('admin/', admin.site.urls),
     path('',include('Home.urls')),
-    path('product/',include('Product.urls'))
+    path('product/',include('Product.urls')),
+    path('user/auth/',include('userauth.urls')),
+    path('cart/',include('cart.urls'))
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 

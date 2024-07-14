@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+   
+
+
+    <main>
+        <!-- page-banner-area-start -->
+        <div class="page-banner-area page-banner-height-2" data-background="{% static "assets/img/banner/page-banner-4.jpg" %}">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="page-banner-content text-center">
+                            <h4 class="breadcrumb-title">Register</h4>
+                            <div class="breadcrumb-two">
+                                <nav>
+                                   <nav class="breadcrumb-trail breadcrumbs">
+                                      <ul class="breadcrumb-menu">
+                                         <li class="breadcrumb-trail">
+                                            <a href="index.html"><span>Home</span></a>
+                                         </li>
+                                         <li class="trail-item">
+                                            <span>Register</span>
+                                         </li>
+                                      </ul>
+                                   </nav> 
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <!-- page-banner-area-end -->
+
+        <br><br>
+                    
+                <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+                    <div class="col-lg-6 ">
+                        <div class="basic-login">
+                            <div class="d-flex justify-content-center">
+                            <h5>Register</h5>
+                            </div>
+                            <form action="" method="post">
+                                
+                            {% csrf_token %} 
+
+                                <label for="username">Username <span>*</span></label>
+                                {% if messages %}
+                                    {% for message in messages %}
+                                        {% if message.extra_tags == 'username' %}
+                                            <span style="color: red; font-size: medium;" class="mt-0">{{message}}</span>
+                                        {% endif %}
+                                    {%endfor%}
+                                {% endif%}
+                                <input id="username" type="text" placeholder="Enter Username" name="username" value="{{ username }}">
+                                <label for="firstname">First Name <span>*</span></label> 
+                                {% if messages %}
+                                    {% for message in messages %}
+                                        {% if message.extra_tags == 'firstname' %}
+                                            <span style="color: red; font-size: medium;" class="mt-0">{{message}}</span>
+                                        {% endif %}
+                                    {%endfor%}
+                                {% endif%}
+                                <input id="firstname" type="text" placeholder="Enter First Name" name="firstname" value="{{ firstname }}">
+                                <label for="lastname">Last Name <span>*</span></label> 
+                                {% if messages %}
+                                    {% for message in messages %}
+                                        {% if message.extra_tags == 'lastname' %}
+                                            <span style="color: red; font-size: medium;" class="mt-0">{{message}}</span>
+                                        {% endif %}
+                                    {%endfor%}
+                                {% endif%}
+                                <input id="lastname" type="text" placeholder="Enter Last Name" name="lastname" value="{{ lastname }}">
+                                <label for="email-id">Email Address <span>*</span></label> 
+                                {% if messages %}
+                                    {% for message in messages %}
+                                        {% if message.extra_tags == 'email' %}
+                                            <span style="color: red; font-size: medium;" class="mt-0">{{message}}</span>
+                                        {% endif %}
+                                    {%endfor%}
+                                {% endif%}
+                                <input id="email-id" type="text" placeholder="Email address..." name="email" value="{{ email }}">
+                                <label for="phonenumber">Phone Number<span>*</span></label> 
+                                {% if messages %}
+                                    {% for message in messages %}
+                                        {% if message.extra_tags == 'phonenumber' %}
+                                            <span style="color: red; font-size: medium;" class="mt-0">{{message}}</span>
+                                        {% endif %}
+                                    {%endfor%}
+                                {% endif%}
+                                <input id="phonenumber" type="text" placeholder="Phone Number..." name="phonenumber" value="{{ phonenumber }}">
+                                <label for="userpass">Password <span>*</span></label> 
+                                {% if messages %}
+                                    {% for message in messages %}
+                                        {% if message.extra_tags == 'password' %}
+                                            <span style="color: red; font-size: medium;" class="mt-0">{{message}}</span>
+                                        {% endif %}
+                                    {%endfor%}
+                                {% endif%}
+                                <input id="userpass" type="password" placeholder="Enter password..." name="password1" value="{{ password }}">
+                                <label for="userpass">Confirm Password <span>*</span></label>
+                                <input id="userpass" type="password" placeholder="Enter password Again..." name="password2" value="{{ password2 }}">
+                                <div class="login-action mb-10 fix">
+                                    <p>Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our <a href="#">privacy policy</a>.</p>
+                                </div>
+                                <button type="submit" class="tp-in-btn w-100">Register</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            {% comment %} </div>
+        </div>  {% endcomment %}
+        <!-- account-area-end -->
+
+      
+    </main>
+<br><br>
+    {% endblock content %}

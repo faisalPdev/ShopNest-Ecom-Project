@@ -1,0 +1,16 @@
+{% comment %} {% extends "base.html" %}
+{% load static %}
+{% block content %} {% endcomment %}
+
+    <h1>Welcome, {{ user.username }}</h1>
+    <p>Email: {{ user.email }}</p>
+    <p>username: {{ user.username }}</p>
+    <p>First Name: {{ user.first_name }}</p>
+    <p>Last Name: {{ user.last_name }}</p>
+    <p>Phone Number: {{ user.phone_number }}</p>
+    
+    <!-- Add more fields as needed -->
+
+    <a href="{% url 'signout' %}">Logout</a>
+
+{% comment %} {% endblock content %} {% endcomment %}

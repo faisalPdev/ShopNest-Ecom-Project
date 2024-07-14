@@ -9,6 +9,7 @@
       <title>Duka Market - Clean, Minimal E-commerce HTML5 Template </title>
       <meta name="description" content="">
       <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="csrf-token" content="{{ csrf_token }}">
       <!-- Place favicon.ico in the root directory -->
       <link rel="shortcut icon" type="image/x-icon" href="{% static "assets/img/favicon.png"%}">
       <!-- CSS here -->
@@ -25,6 +26,8 @@
       <link rel="stylesheet" href="{% static "assets/css/font-awesome-pro.css"%}">
       <link rel="stylesheet" href="{% static "assets/css/default.css"%}">
       <link rel="stylesheet" href="{% static "assets/css/style.css"%}">
+      <!-- sweet alert js -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
    </head>
    <body>
 
@@ -55,6 +58,35 @@
     <script src="{% static "assets/js/imagesloaded-pkgd.js"%}"></script>
     <script src="{% static "assets/js/ajax-form.js"%}"></script>
     <script src="{% static "assets/js/main.js"%}"></script>
+    <script src="https://unpkg.com/htmx.org@1.6.1"></script>
+    <script>
+        document.addEventListener("htmx:configRequest", (event) => {
+            event.detail.headers['X-CSRFToken'] = document.querySelector('meta[name="csrf-token"]').content;
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- sweet alert 2 js -->
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        {% if messages %}
+            {% for message in messages %}
+                Swal.fire({
+                    toast: true,
+                    position: 'top',
+                    showConfirmButton: false,
+                    timer: 2000,
+                    timerProgressBar: true,
+                    title: 'Notification',
+                    text: '{{ message }}',
+                    icon: '{% if message.tags == 'success' %}success{% elif message.tags == 'error' %}error{% elif message.tags == 'warning' %}warning{% else %}info{% endif %}'
+                });
+            {% endfor %}
+        {% endif %}
+        });
+    </script> -->
  </body>
 
 <!-- Mirrored from themepure.net/template/dukamarket/dukamarket/index-3.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 19 Feb 2022 17:22:29 GMT -->

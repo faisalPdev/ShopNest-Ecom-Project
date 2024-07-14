@@ -133,6 +133,10 @@
                             <div class="header-inner-end text-md-end">
                                 <div class="ovic-menu-wrapper ovic-menu-wrapper-2">
                                     <ul>
+                                        <li><button   hx-get="{% url 'profile' %}" hx-target="#profileview" hx-swap="innerHTML" hx-triggger="click">Profile</button></li>
+                                        <div id="profileview">
+                                            <!-- Profile content will be inserted here -->
+                                        </div>
                                         <li><a href={% url 'home' %} >Home</a></li>
                                         <li><a href="about.html">About Us</a></li>
                                         <li><a href="contact.html">Order Tracking</a></li>
@@ -182,15 +186,21 @@
                         <div class="col-xl-4 col-lg-5 col-md-8 col-sm-8">
                             <div class="header-action">
                                 <div class="block-userlink">
-                                    <a class="icon-link icon-link-2" href="my-account.html">
+                                    <a class="icon-link icon-link-2" href="{% url 'signin' %}">
                                     <i class="flaticon-user"></i>
                                     <span class="text">
+                                {% if user.is_authenticated %}
+                                        <span class="sub">Hi,</span>
+                                        {{user.username}}
+                                        <span><a href="{% url 'signout' %}">logout</a></span>
+                                {% else %}
                                     <span class="sub">Login </span>
                                     My Account </span>
+                                {% endif %}
                                     </a>
                                 </div>
                                 <div class="block-wishlist action">
-                                    <a class="icon-link icon-link-2" href="wishlist.html">
+                                    <a class="icon-link icon-link-2" href="{% url 'wishlist' %}">
                                     <i class="flaticon-heart"></i>
                                     <span class="count count-2">0</span>
                                     <span class="text">
@@ -199,7 +209,7 @@
                                     </a>
                                 </div>
                                 <div class="block-cart action">
-                                    <a class="icon-link icon-link-2" href="cart.html">
+                                    <a class="icon-link icon-link-2" href={% url 'cart' %}>
                                     <i class="flaticon-shopping-bag"></i>
                                     <span class="count count-2">1</span>
                                     <span class="text">

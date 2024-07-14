@@ -1,0 +1,204 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+<!-- cart-area-start -->
+<section class="cart-area pt-120 pb-120">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <form action="#">
+          <div class="table-content table-responsive">
+            {% if cart %}
+            <table class="table cartData">
+              <thead>
+                <tr>
+                  <th class="product-thumbnail">Images</th>
+                  <th class="cart-product-name">Product</th>
+                  <th class="product-price">Unit Price</th>
+                  <th class="product-quantity">Quantity</th>
+                  <th class="product-subtotal">Total</th>
+                  <th class="product-remove">Remove</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for item in cart %}
+                <tr>
+                  
+                  <input
+                    type="hidden"
+                    class="product-id"
+                    value="{{item.product.pid}}"
+                  />
+                  <td class="product-thumbnail">
+                    <a href="shop-details.html"
+                      ><img src="{{item.product.featured_image}}" alt=""
+                    /></a>
+                  </td>
+                  <td class="product-name">
+                    <a href="shop-details.html"
+                      >{{item.product.title|truncatechars:15}}</a
+                    >
+                  </td>
+                  <td class="product-price">
+                    <span class="amount">${{item.product.price}}</span>
+                  </td>
+                  <td class="product-quantity qtyDiv">
+                    <div class="cart-plus-minus">
+                      <input
+                        type="text"
+                        class="qtyValue"
+                        value="{{item.quantity}}"
+                      />
+                      <div class="dec qtybutton">-</div>
+                      <div class="inc qtybutton">+</div>
+                    </div>
+                  </td>
+                  <td class="product-subtotal">
+                    <span class="amount">${{item.total}}</span>
+                  </td>
+                  <td class="product-remove">
+                    <a  class="deleteBtn"><i class="fa fa-times"></i></a>
+                  </td>
+                  </div>   
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            {% else %}
+            <h1 class="text-danger f">No item available......</h1>
+            {% endif %}
+          </div>
+          <!-- {% if user.is_authenticated %}
+          <div class="row">
+            <div class="col-12">
+              <div class="coupon-all">
+                <div class="coupon">
+                  <input
+                    id="coupon_code"
+                    class="input-text"
+                    name="coupon_code"
+                    value=""
+                    placeholder="Coupon code"
+                    type="text"
+                  />
+                  <button class="tp-btn-h1" name="apply_coupon" type="submit">
+                    Apply coupon
+                  </button>
+                </div>
+              
+              </div>
+            </div>
+          </div>
+          {% endif %} -->
+          {% if cart%}
+          <div class="row justify-content-end">
+            <div class="col-md-5">
+              <div class="cart-page-total">
+                <h2>Cart totals</h2>
+                <ul class="mb-20">
+                  <li class="subTotal">
+                    Sub Total <span class="amount">${{sub_total}}</span>
+                  </li>
+                  <li>Delivery Charges<span class="text-success fw-bold">Free</span></li>
+                  <li class="text-dark fw-bold">Total<span class="text-dark fw-bold">{{sub_total}}</span></li>
+                </ul>
+                <a class="tp-btn-h1" href="{% url 'place-order' %}"
+                  >Place Order</a
+                >
+              </div>
+            </div>
+          </div>
+          {% else %}
+          
+          {% endif %}
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- cart-area-end -->
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    $(".dec").click(function (e) {
+      e.preventDefault();
+      var row = $(this).closest("tr");
+      var qtyInput = row.find(".qtyValue");
+      var updated_qty = parseInt(qtyInput.val());
+      var pid = row.find(".product-id").val();
+
+      if (updated_qty > 0) {
+        $.ajax({
+          type: "POST",
+          url: "{% url 'cart-item-decrement' %}",
+          data: {
+            updated_qty: updated_qty,
+            pid: pid,
+            csrfmiddlewaretoken: "{{ csrf_token }}",
+          },
+          success: function (response) {
+            console.log(response);
+            qtyInput.val(updated_qty);
+            row
+              .find(".product-subtotal .amount")
+              .text("$" + response.new_total);
+            $(".subTotal .amount").text("$" + response.sub_total);
+          },
+        });
+      }
+    });
+
+    $(".inc").click(function (e) {
+      e.preventDefault();
+      var row = $(this).closest("tr");
+      var qtyInput = row.find(".qtyValue");
+      var updated_qty = parseInt(qtyInput.val());
+      var pid = row.find(".product-id").val();
+
+      $.ajax({
+        type: "POST",
+        url: "{% url 'cart-item-increment' %}",
+        data: {
+          updated_qty: updated_qty,
+          pid: pid,
+          csrfmiddlewaretoken: "{{ csrf_token }}",
+        },
+        success: function (response) {
+          console.log(response);
+          qtyInput.val(updated_qty);
+          row.find(".product-subtotal .amount").text("$" + response.new_total);
+          $(".subTotal .amount").text("$" + response.sub_total);
+        },
+      });
+    });
+
+
+    $('.deleteBtn').click(function (e) {
+      e.preventDefault();
+      var row = $(this).closest("tr");
+      var pid = row.find(".product-id").val();
+      $.ajax({
+         type: "POST",
+         url: "{% url 'remove-item' %}",
+         data: {
+            "pid":pid,
+             csrfmiddlewaretoken: "{{ csrf_token }}",
+         },
+         
+         success: function (response) {
+            
+            if (response.message === "item deleted"){
+               row.remove()
+               $(".subTotal .amount").text("$" + response.sub_total);
+
+            }else{
+               alert("An error occurred while removing the item.")
+            }
+           
+         }
+      });
+    });
+  });
+</script>
+
+{% endblock %}

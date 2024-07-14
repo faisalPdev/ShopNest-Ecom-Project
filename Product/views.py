@@ -20,3 +20,11 @@ def laptop_product_list(request):
         
     }
     return render(request,'shop.html',context)
+
+def product_modal(request,pid):
+    product=Product.objects.get(pid=pid)
+    return render(request,'product-modal.html',{"product":product})
+
+def product_detail(request,slug):
+    product=Product.objects.get(slug=slug)
+    return render(request,'product-detail.html',{"product":product})

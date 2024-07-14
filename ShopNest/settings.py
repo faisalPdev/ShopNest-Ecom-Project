@@ -32,16 +32,21 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'jet',
+    # 'jet',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
     #custom-apps
     'Home',
     'Product',
+    'userauth',
+    'cart',
+    'order',
+    
     # ck-editor
     'ckeditor',
     'ckeditor_uploader',
@@ -56,6 +61,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
 ROOT_URLCONF = 'ShopNest.urls'
 
@@ -90,6 +98,7 @@ DATABASES = {
 }
 
 
+AUTH_USER_MODEL = 'userauth.Account'
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
@@ -119,6 +128,12 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+
+# settings.py
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',  # default backend for admin
+    # 'myapp.backends.CustomerBackend',  # custom backend for customer login
+]
 
 
 # Static files (CSS, JavaScript, Images)

@@ -1,0 +1,304 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+
+
+
+<!-- coupon-area-start -->
+<section class="coupon-area pt-120 pb-30">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+
+            </div>
+            <div class="col-md-5">
+
+                <div class="coupon-info">
+                    <form action=>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p class="checkout-coupon">
+                                    <input type="text" placeholder="Coupon Code" class="coupon_code" style="height: 60px;">
+                                </p>
+                            </div>
+                            <div class="col-md-4">
+                                <button class="tp-btn-h1 couponApply" type="submit" style="width: 172px;">Apply Coupon</button>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+</section>
+<!-- coupon-area-end -->
+
+<!-- checkout-area-start -->
+<section class="checkout-area pb-85">
+    <div class="container">
+        <form action="#">
+            <div class="row">
+                <div class="col-lg-7 shadow">
+                    <div class="checkbox-form">
+                        <h3>Shipping Address</h3>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="country-select">
+                                    <label>Country <span class="required">*</span></label>
+                                    <select style="display: none;">
+                                        <option value="volvo">bangladesh</option>
+                                        <option value="saab">Algeria</option>
+                                        <option value="mercedes">Afghanistan</option>
+                                        <option value="audi">Ghana</option>
+                                        <option value="audi2">Albania</option>
+                                        <option value="audi3">Bahrain</option>
+                                        <option value="audi4">Colombia</option>
+                                        <option value="audi5">Dominican Republic</option>
+                                    </select>
+                                    <div class="nice-select" tabindex="0"><span class="current">bangladesh</span>
+                                        <ul class="list">
+                                            <li data-value="volvo" class="option selected">bangladesh</li>
+                                            <li data-value="saab" class="option">Algeria</li>
+                                            <li data-value="mercedes" class="option">Afghanistan</li>
+                                            <li data-value="audi" class="option">Ghana</li>
+                                            <li data-value="audi2" class="option">Albania</li>
+                                            <li data-value="audi3" class="option">Bahrain</li>
+                                            <li data-value="audi4" class="option">Colombia</li>
+                                            <li data-value="audi5" class="option">Dominican Republic</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="checkout-form-list">
+                                    <label>First Name <span class="required">*</span></label>
+                                    <input type="text" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="checkout-form-list">
+                                    <label>Last Name <span class="required">*</span></label>
+                                    <input type="text" placeholder="">
+                                </div>
+                            </div>
+                            <!-- <div class="col-md-12">
+                                <div class="checkout-form-list">
+                                    <label>Company Name</label>
+                                    <input type="text" placeholder="">
+                                </div>
+                            </div> -->
+                            <div class="col-md-12">
+                                <div class="checkout-form-list">
+                                    <label>Address <span class="required">*</span></label>
+                                    <input type="text" placeholder="Address">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="checkout-form-list">
+                                    <label>Land Mark<span class="required">*</span></label>
+                                    <input type="text" placeholder="Apartment, suite, unit etc. (optional)">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="checkout-form-list">
+                                    <label>Town / City <span class="required">*</span></label>
+                                    <input type="text" placeholder="Town / City">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="checkout-form-list">
+                                    <label>State / County <span class="required">*</span></label>
+                                    <div class="country-select">
+                                        <select class="w-100">
+                                            <option value="andhra_pradesh">Andhra Pradesh</option>
+                                            <option value="arunachal_pradesh">Arunachal Pradesh</option>
+                                            <option value="assam">Assam</option>
+                                            <option value="bihar">Bihar</option>
+                                            <option value="chhattisgarh">Chhattisgarh</option>
+                                            <option value="goa">Goa</option>
+                                            <option value="gujarat">Gujarat</option>
+                                            <option value="haryana">Haryana</option>
+                                            <option value="himachal_pradesh">Himachal Pradesh</option>
+                                            <option value="jharkhand">Jharkhand</option>
+                                            <option value="karnataka">Karnataka</option>
+                                            <option value="kerala">Kerala</option>
+                                            <option value="madhya_pradesh">Madhya Pradesh</option>
+                                            <option value="maharashtra">Maharashtra</option>
+                                            <option value="manipur">Manipur</option>
+                                            <option value="meghalaya">Meghalaya</option>
+                                            <option value="mizoram">Mizoram</option>
+                                            <option value="nagaland">Nagaland</option>
+                                            <option value="odisha">Odisha</option>
+                                            <option value="punjab">Punjab</option>
+                                            <option value="rajasthan">Rajasthan</option>
+                                            <option value="sikkim">Sikkim</option>
+                                            <option value="tamil_nadu">Tamil Nadu</option>
+                                            <option value="telangana">Telangana</option>
+                                            <option value="tripura">Tripura</option>
+                                            <option value="uttar_pradesh">Uttar Pradesh</option>
+                                            <option value="uttarakhand">Uttarakhand</option>
+                                            <option value="west_bengal">West Bengal</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="checkout-form-list">
+                                    <label>Pincode / Zip <span class="required">*</span></label>
+                                    <input type="text" placeholder="Pincode / Zip">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="checkout-form-list">
+                                    <label>Email Address <span class="required">*</span></label>
+                                    <input type="email" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="checkout-form-list">
+                                    <label>Phone <span class="required">*</span></label>
+                                    <input type="text" placeholder="Postcode / Zip">
+                                </div>
+                            </div>
+                            <!-- <div class="col-md-12">
+                                <div class="checkout-form-list create-acc">
+                                    <input id="cbox" type="checkbox">
+                                    <label>Create an account?</label>
+                                </div>
+                                <div id="cbox_info" class="checkout-form-list create-account">
+                                    <p>Create an account by entering the information below. If you are a returning
+                                        customer please login at the top of the page.</p>
+                                    <label>Account password <span class="required">*</span></label>
+                                    <input type="password" placeholder="password">
+                                </div>
+                            </div> -->
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-5 ">
+                    <div class="your-order mb-30 ">
+                        <div class="mb-4">
+                            <a class="btn btn-success" href="{% url 'cart' %}"><i class="fas fa-shopping-cart"></i> Back
+                                To Cart</a>
+                        </div>
+                        <h3>Order Summary</h3>
+                        <div class="your-order-table  table-responsive ">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th class="product-name text-dark fw-bold">Image</th>
+                                        <th class="product-name text-dark fw-bold">Product</th>
+                                        <th class="product-total text-dark fw-bold">Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for item in cart %}
+                                    <tr class="cart_item">
+                                        <td class="product-image">
+                                            <img src="{{item.product.featured_image}}" alt="" style="height: 88px;">
+                                        </td>
+                                        <td class="product-name align-items-center text-dark">
+                                            {{item.product.title|truncatechars:14}} <strong
+                                                class="product-quantity text-dark fw-bold"> × {{item.quantity}}</strong>
+                                        </td>
+                                        <td class="product-total">
+                                            <span class="amount text-dark ">₹ {{item.total}}</span>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+
+                                </tbody>
+                                <tfoot>
+                                    <tr class="cart-subtotal">
+
+                                        <th></th>
+                                        <th>Cart Subtotal</th>
+                                        <td><span class="amount">₹ {{sub_total}}</span></td>
+                                    </tr>
+                                    <tr class="cart-subtotal">
+                                        <th></th>
+                                        <th>Saved</th>
+                                        <td><span class="amount">₹
+                                           {{saved}}
+                                        </span></td>
+                                    </tr>
+                                    <tr class="shipping">
+                                        <th></th>
+                                        <th>Shipping</th>
+                                        <td>
+                                            <ul>
+
+                                                <li>
+
+                                                    <labe class="text-success fw-bold">Free Shipping</label>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr class="order-total">
+                                        <th></th>
+                                        <th class="text-dark fw-bold">Order Total</th>
+                                        <td><strong><span class="amount">₹ {{grand_total}}
+                                        </span></strong>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+
+                        <div class="payment-method">
+
+                            <div class="order-button-payment mt-20">
+                                <button type="submit" class="tp-btn-h1">COD | Place order</button>
+                            </div>
+                            <div class="order-button-payment mt-20">
+                                <button type="submit" class="tp-btn-h1">Razorpay</button>
+                            </div>
+                            <div class="order-button-payment mt-20">
+                                <button type="submit" class="tp-btn-h1">PayPal</button>
+                            </div>
+                            <!-- <div class="row">
+                                    <button type="submit" class="btn btn-info mt-3" style="height: 59px;">Razor Pay</button>
+                                </div> -->
+                            <!-- <div class="row">
+                                <button type="submit" class="btn btn-success mt-3" style="height: 59px;">Place order</button>
+                                </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+<script>
+  $(document).ready(function () {
+    $(".couponApply").click(function () {
+
+      var coupon_code=$('.coupon_code').val();
+
+      $.ajax({
+        type: "POST",
+        url: "{% url 'coupon_apply' %}",
+        data: {
+            "coupon_code":coupon_code,
+             csrfmiddlewaretoken: "{{ csrf_token }}",
+        },
+        
+        success: function (response) {
+            alert(response.message)
+            
+        }
+      });
+    });
+
+  });
+</script>
+
+{% endblock %}
